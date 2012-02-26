@@ -13,33 +13,39 @@ function myblog_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_myblog';
-  $strongarm->value = 0;
-  $export['comment_anonymous_myblog'] = $strongarm;
+  $strongarm->name = 'menu_options_myblog';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_myblog'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_myblog';
+  $strongarm->name = 'menu_parent_myblog';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_myblog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_myblog';
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'promote',
+  );
+  $export['node_options_myblog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_myblog';
   $strongarm->value = 1;
-  $export['comment_default_mode_myblog'] = $strongarm;
+  $export['node_submitted_myblog'] = $strongarm;
 
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_myblog';
-  $strongarm->value = '50';
-  $export['comment_default_per_page_myblog'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_myblog';
-  $strongarm->value = 1;
-  $export['comment_form_location_myblog'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  return $export;
+}
+>disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_myblog';
   $strongarm->value = '2';
