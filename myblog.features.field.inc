@@ -10,16 +10,14 @@
 function myblog_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-myblog-body'
-  $fields['node-myblog-body'] = array(
+  // Exported field: 'node-myblog-field_teaser'
+  $fields['node-myblog-field_teaser'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
+      'entity_types' => array(),
+      'field_name' => 'field_teaser',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -36,7 +34,7 @@ function myblog_field_default_fields() {
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
-      'type' => 'text_with_summary',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'myblog',
@@ -45,39 +43,35 @@ function myblog_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => 1,
         ),
         'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'field_name' => 'field_teaser',
+      'label' => 'Teaser',
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
-          'summary_rows' => 5,
+          'rows' => '5',
         ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
+        'type' => 'text_textarea',
+        'weight' => '32',
       ),
     ),
   );
@@ -114,17 +108,17 @@ function myblog_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'myblog',
       'deleted' => '0',
-      'description' => 'Featured Thumbnail',
+      'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '1',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -138,32 +132,31 @@ function myblog_field_default_fields() {
       'label' => 'Thumbmail Image',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 1,
-        'file_directory' => 'thumbnails',
+        'alt_field' => 0,
+        'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
-        'title_field' => 1,
+        'title_field' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'image',
         'settings' => array(
-          'preview_image_style' => 'thumbnail',
+          'preview_image_style' => 'medium',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '-3',
+        'weight' => '31',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
-  t('Featured Thumbnail');
+  t('Teaser');
   t('Thumbmail Image');
 
   return $fields;
