@@ -10,14 +10,16 @@
 function myblog_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-myblog-field_teaser'
-  $fields['node-myblog-field_teaser'] = array(
+  // Exported field: 'node-myblog-body'
+  $fields['node-myblog-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_teaser',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -34,7 +36,7 @@ function myblog_field_default_fields() {
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'text_with_summary',
     ),
     'field_instance' => array(
       'bundle' => 'myblog',
@@ -43,35 +45,39 @@ function myblog_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '0',
         ),
         'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
           'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_teaser',
-      'label' => 'Teaser',
-      'required' => 0,
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
       'settings' => array(
-        'text_processing' => '1',
+        'display_summary' => TRUE,
+        'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'rows' => 20,
+          'summary_rows' => 5,
         ),
-        'type' => 'text_textarea',
-        'weight' => '32',
+        'type' => 'text_textarea_with_summary',
+        'weight' => '-4',
       ),
     ),
   );
@@ -108,17 +114,17 @@ function myblog_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'myblog',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Featured Thumbnail',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 0,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -132,36 +138,23 @@ function myblog_field_default_fields() {
       'label' => 'Thumbmail Image',
       'required' => 0,
       'settings' => array(
-        'alt_field' => 0,
-        'file_directory' => '',
+        'alt_field' => 1,
+        'file_directory' => 'thumbnails',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
-        'title_field' => 0,
+        'title_field' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'image',
         'settings' => array(
-          'preview_image_style' => 'medium',
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '31',
-      ),
-    ),
-  );
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Teaser');
-  t('Thumbmail Image');
-
-  return $fields;
-}
-age',
         'weight' => '-3',
       ),
     ),
